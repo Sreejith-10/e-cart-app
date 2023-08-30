@@ -10,10 +10,10 @@ const PageRoute = () => {
     return (
 			<CartContext>
 				<Routes>
-					<Route path='/' element={<ProductsPage />} />
-					<Route path='/cart' element={<Cart />} />
-					<Route path='/order' element={<Order />} />
-					<Route path='/favorites' element={<Favorites />} />
+					<Route exact path='/' element={<ProductsPage />} />
+					<Route exact path='/cart' element={<Cart />} />
+					<Route exact path='/order' element={<Order />} />
+					<Route exact path='/favorites' element={<Favorites />} />
 				</Routes>
 			</CartContext>
 		);
