@@ -4,7 +4,9 @@ export const CartProductContext = React.createContext();
 
 const CartContext = (props) => {
 	const [cartItems, setCartItems] = useState([]);
+	const [favProduct, setFavProduct] = useState([]);
 	let cartLength = cartItems.length;
+	let favLength = favProduct.length
 	let cartTotal = 0;
 
 	cartItems.map((val) => {
@@ -12,7 +14,7 @@ const CartContext = (props) => {
 	});
 	return (
 		<CartProductContext.Provider
-			value={{cartItems, setCartItems, cartLength, cartTotal}}>
+			value={{cartItems, setCartItems, cartLength, cartTotal,favProduct,setFavProduct,favLength}}>
 			{props.children}
 		</CartProductContext.Provider>
 	);

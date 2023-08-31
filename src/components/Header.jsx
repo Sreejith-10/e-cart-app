@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {BsMenuButtonWideFill} from "react-icons/bs";
 import {AiOutlineClose} from "react-icons/ai";
 import {Link, NavLink} from "react-router-dom";
+import {CartProductContext} from "../context/CartContext";
 
 const Header = () => {
 	const [nav, setNav] = useState(true);
 	const [activeNav, setActiveNav] = useState("")
+	const {cartLength,favLength} = useContext(CartProductContext)
 
 	return (
 		<div className='container max-w-full'>
@@ -19,17 +21,27 @@ const Header = () => {
 					<ul className='flex flex-row justify-around cursor-pointer'>
 						<NavLink
 							to='/cart'
-							className=' text-[20px] font-bold  px-[20px] py-[5px] transition ease-out delay-100 rounded-[20px]  hover:bg-[#a6bec9] hover:rounded-[20px] hover:text-white hover:shadow-sm hover:shadow-black'>
+							className='relative w-[100px] h-[40px] text-[20px] font-bold  px-[20px] py-[5px] transition ease-out delay-100 rounded-[20px]  '>
+							{cartLength!=0?<div className='absolute bottom-[28px] left-[70px] border w-[20px] h-[20px] border-slate-500'>
+								<p className='text-[15px] text-center w-[100%] h-[100%]'>
+									{cartLength}
+								</p>
+							</div>:null}
 							Cart
 						</NavLink>
 						<NavLink
 							to='/order'
-							className=' text-[20px] font-bold px-[20px]  py-[5px] ml-[10px] transition ease-out delay-100 rounded-[20px] hover:bg-[#a6bec9] hover:rounded-[20px]  hover:text-white hover:shadow-sm hover:shadow-black'>
+							className='w-[100px] h-[40px] text-[20px] font-bold px-[20px]  py-[5px] ml-[10px] transition ease-out delay-100 rounded-[20px] '>
 							Order
 						</NavLink>
 						<NavLink
 							to='/favorites'
-							className=' text-[20px] font-bold px-[20px]  py-[5px] ml-[10px] transition ease-out delay-100 rounded-[20px] hover:bg-[#a6bec9] hover:rounded-[20px]  hover:text-white hover:shadow-sm hover:shadow-black'>
+							className='relative w-[140px] h-[40px] text-[20px] font-bold px-[20px]  py-[5px] ml-[10px] transition ease-out delay-100 rounded-[20px] '>
+							{favLength!=0?<div className='absolute bottom-[28px] left-[100px] border w-[20px] h-[20px] border-slate-500'>
+								<p className='text-[15px] text-center w-[100%] h-[100%]'>
+									{favLength}
+								</p>
+							</div>: null}
 							Favorites
 						</NavLink>
 					</ul>

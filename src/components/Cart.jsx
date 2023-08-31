@@ -58,34 +58,35 @@ const Cart = () => {
 	});
 
 	return (
-		<div className='container w-auto h-auto md:mx-[200px] md:my-[70px]'>
+		<div className=' container w-auto h-auto md:mx-[200px] md:my-[70px]'>
 			<div className='flex items-start justify-center'>
 				<h1 className='text-[30px] font-bold'>Your Cart</h1>
 			</div>
-			{cartLength === 0 ? (
-				<div className='flex justify-center items-center md:my-[100px]'>
-					<h1 className='text-[50px]'>Cart is empty!</h1>
-				</div>
-			) : (
-				<div>
-					<div className='my-[50px] flex flex-col items-center'>
-						<ul className='flex flex-col justify-around'>{allCartItems}</ul>
+			<div>
+				{cartLength === 0 ? (
+					<div className='flex justify-center items-center md:my-[100px]'>
+						<h1 className='text-[50px]'>Cart is empty!</h1>
 					</div>
-					<div className='flex flex-col justify-center items-center ml-[33%] mb-[50px] w-[500px] h-[100px] bg-slate-200 border rounded-[10px] shadow-black shadow-sm '>
-						<h1 className='mb-2 text-[20px] font-bold'>
-							Total Price: Rs {cartTotal}/-
-						</h1>
-						<div className='w-[100px] h-[40px]'>
-							<button
-								onClick={placeOrder}
-								className='bg-green-500 w-[100%] h-[100%] rounded-[10px] font-bold '>
-								Place Order
-							</button>
+				) : (
+					<div>
+						<div className='my-[50px] flex flex-col items-center'>
+							<ul className='flex flex-col justify-around'>{allCartItems}</ul>
+						</div>
+						<div className='flex flex-col justify-center items-center ml-[33%] mb-[50px] w-[500px] h-[100px] bg-slate-200 border rounded-[10px] shadow-black shadow-sm '>
+							<h1 className='mb-2 text-[20px] font-bold'>
+								Total Price: Rs {cartTotal}/-
+							</h1>
+							<div className='w-[100px] h-[40px]'>
+								<button
+									onClick={placeOrder}
+									className='bg-green-500 w-[100%] h-[100%] rounded-[10px] font-bold '>
+									Place Order
+								</button>
+							</div>
 						</div>
 					</div>
-				</div>
-			)}
-			<div>{order ? <div>hi</div> : null}</div>
+				)}
+			</div>
 		</div>
 	);
 };
