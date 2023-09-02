@@ -16,7 +16,6 @@ const Favorites = () => {
 		setFavProduct(updateData);
 	};
 	const addToCart = (data) => {
-		console.log(data);
 		data.cartState = true;
 		setCartItems([
 			...cartItems,

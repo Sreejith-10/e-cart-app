@@ -1,14 +1,19 @@
 import React, {useContext, useState} from "react";
 import {CartProductContext} from "../context/CartContext";
 import CartItemList from "./CartItemList";
+import {useNavigate} from "react-router-dom"
 
 const Cart = () => {
+	let navigate = useNavigate()
 	//cart context
 	const {cartItems, setCartItems, cartLength, cartTotal} =
 		useContext(CartProductContext);
-	const [order, setOrder] = useState(false);
+	
 
 	//functions
+	const orderFormPage = () =>{
+		navigate('/order-form')
+	}
 	const incrementQuantity = (proId) => {
 		let changedItems = cartItems.map((val) => {
 			if (proId === val.data.id) {
@@ -43,9 +48,7 @@ const Cart = () => {
 			});
 		setCartItems(changedItems);
 	};
-	const placeOrder = () => {
-		setOrder(true);
-	};
+	const placeOrder = () => {};
 	//showing cart list
 	let allCartItems = cartItems.map((val) => {
 		return (
@@ -77,11 +80,11 @@ const Cart = () => {
 								Total Price: Rs {cartTotal}/-
 							</h1>
 							<div className='w-[100px] h-[40px]'>
-								<button
-									onClick={placeOrder}
-									className='bg-green-500 w-[100%] h-[100%] rounded-[10px] font-bold '>
-									Place Order
-								</button>
+									<button
+										onClick={()=>orderFormPage()}
+										className='bg-green-500 w-[100%] h-[100%] rounded-[10px] font-bold '>
+										Place Order
+									</button>
 							</div>
 						</div>
 					</div>
